@@ -107,9 +107,22 @@ int main()
 	// (can be done in single statement!)
 	std::cout << "<< Number Words to Digits >>" << std::endl;
 	{
-		
-		// code goes here
-		
+		std::istringstream iss(nambies);
+		std::transform(
+			std::istream_iterator<std::string>(iss),
+			std::istream_iterator<std::string>(),
+			std::ostream_iterator<int>(std::cout),
+			[&numbers](const std::string& word)
+			{
+				return std::find_if(numbers.begin(), numbers.end(),
+					[&word](const Pube& p)
+					{
+						return p.str == word;
+					}
+				)->num;
+			}
+		);
+		std::cout << '\n';
 	}
 	std::cout << "============================================" << std::endl << std::endl;
 
