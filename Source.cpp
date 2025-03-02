@@ -78,30 +78,27 @@ int main()
 	// output sorted meme list w/ score and name using custom insertion operator
 	std::cout << "<< Sort Memes >>" << std::endl;
 	{
-		std::vector<Pube> four_memes;
-		for (auto& meme : memes)
+		auto sorted = memes;
+		for (int i = 0; i < 3; i++)
 		{
-			four_memes.push_back(meme);
-			four_memes.push_back(meme);
-			four_memes.push_back(meme);
-			four_memes.push_back(meme);
+			sorted.insert(sorted.end(), memes.begin(), memes.end());
 		}
 
-		sort(four_memes.begin(), four_memes.end(),
-			[](auto f, auto s)
-			{
-				return f.num > s.num;
-			}
-		);
-
-		sort(four_memes.begin(), four_memes.end(),
-			[](auto f, auto s)
+		std::sort(sorted.begin(), sorted.end(),
+			[](const auto& f, const auto& s)
 			{
 				return f.str < s.str;
 			}
 		);
 
-		std::cout << four_memes << std::endl;
+		std::stable_sort(sorted.begin(), sorted.end(),
+			[](const auto& f, const auto& s)
+			{
+				return f.num > s.num;
+			}
+		);
+
+		std::cout << sorted << std::endl;
 	}
 	std::cout << "============================================" << std::endl << std::endl;
 
@@ -110,13 +107,15 @@ int main()
 	// (can be done in single statement!)
 	std::cout << "<< Number Words to Digits >>" << std::endl;
 	{
+		
 		// code goes here
+		
 	}
 	std::cout << "============================================" << std::endl << std::endl;
 
 	// Problem 3:
 	// output numpies as a string of words separated by spaces
-	// don't use std::find_if or other searches
+	// don't use std::find_if or other searche
 	std::cout << "<< Digits to Number Words >>" << std::endl;
 	{
 		// code goes here
